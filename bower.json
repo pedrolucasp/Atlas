@@ -1,0 +1,24 @@
+{
+  "name": "atlas",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "Pedro Lucas Porcellis",
+      "email": "pedrolucasporcellis@gmail.com"
+    }
+  ],
+  "main": ["dist/atlas.js"],
+  "ignore": [
+    "src",
+    "test",
+    "gulpfile.js",
+    "karma-*.conf.js",
+    "**/.*"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "angular-mocks": ">=1.2.0",
+    "angular-scenario": ">=1.2.0",
+    "angular": ">=1.2.0"
+  }
+}
