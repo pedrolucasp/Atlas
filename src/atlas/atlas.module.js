@@ -4,19 +4,19 @@
   // before all nested files are concatenated by Gulp
 
   // Config
-  angular.module('atlas.config', [])
-    .value('atlas.config', {
+  angular.module("atlas.config", [])
+    .value("atlas.config", {
       debug: true
     });
 
   // Modules
-  angular.module('atlas.components', []);
-  angular.module('atlas.services', []);
-  angular.module('atlas',
+  angular.module("atlas.components", []);
+  angular.module("atlas.services", []);
+  angular.module("atlas",
     [
-      'atlas.config',
-      'atlas.components',
-      'atlas.services'
+      "atlas.config",
+      "atlas.components",
+      "atlas.services"
     ]);
 
 })(angular);
