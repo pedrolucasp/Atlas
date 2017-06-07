@@ -4,28 +4,28 @@
 module.exports = function(config) {
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: "",
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'chai-jquery', 'jquery-1.8.3', 'sinon-chai'],
+    frameworks: ["mocha", "chai-jquery", "jquery-1.8.3", "sinon-chai"],
 
     plugins: [
-      'karma-mocha',
-      'karma-chai',
-      'karma-sinon-chai',
-      'karma-chrome-launcher',
-      'karma-phantomjs-launcher',
-      'karma-jquery',
-      'karma-chai-jquery'
+      "karma-mocha",
+      "karma-chai",
+      "karma-sinon-chai",
+      "karma-chrome-launcher",
+      "karma-phantomjs-launcher",
+      "karma-jquery",
+      "karma-chai-jquery"
     ],
 
     // list of files / patterns to load in the browser
     files: [
-      'bower/angular/angular.js',
-      'bower/angular-mocks/angular-mocks.js',
-      'dist/atlas.min.js',
-      'test/unit/**/*.js'
+      "bower/angular/angular.js",
+      "bower/angular-mocks/angular-mocks.js",
+      "dist/atlas.min.js",
+      "test/unit/**/*.js"
     ],
 
     // list of files to exclude
@@ -36,9 +36,9 @@ module.exports = function(config) {
     preprocessors: {},
 
     // test results reporter to use
-    // possible values: 'dots', 'progress'
+    // possible values: "dots", "progress"
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ["progress"],
 
     // web server port
     port: 9876,
@@ -55,7 +55,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ["PhantomJS"],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
