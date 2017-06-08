@@ -36,6 +36,8 @@
     ].join(" ")
   };
 
+  AtlasMapController.$inject = ["$scope", "$element", "$attrs"];
+
   function AtlasMapController($scope, $element, $attrs) {
     var ctrl           = this;
     ctrl.map           = {};
@@ -52,32 +54,42 @@
         // all the map data. Maybe delegate this to a factory of Maps?
         var mapElement = angular.element($element).children().children()[0];
         var google     = window.google;
-        var options    = angular.merge(defaultOptions, {
+        var options    = angular.extend(defaultOptions, {
           zoom: ctrl.zoom,
           center: (ctrl.center.lat ? convertLatLng(ctrl.center.lat, ctrl.center.lng) : defaultOptions.center )
         });
 
-        var mapState = {
-          map: new google.maps.Map(mapElement, options),
-          zoom: options.zoom,
-          center: options.center
-        };
-
-        ctrl.map = mapState.map;
-        ctrl.zoom = mapState.zoom;
-        ctrl.center = mapState.center;
+        ctrl.map    = new google.maps.Map(mapElement, options);
+        ctrl.zoom   = options.zoom;
+        ctrl.center = options.center;
       } else {
         throw new Error("DependencyError: Expected Google Maps Library, but it wasn't found.");
       }
     };
 
     ctrl.$onChanges = function(changes) {
-      console.log("changed: ", changes);
+      if (changes.center && !changes.center.isFirstChange()) {
+        setCenter(changes.center.currentValue);
+      }
+
+      if (changes.zoom && !changes.zoom.isFirstChange()) {
+        if (changes.zoom.currentValue) {
+          setZoomLevel(changes.zoom.currentValue);
+        }
+      }
     };
 
     ctrl.updateState = function(obj) {
-      angular.merge(ctrl.state, obj);
+      angular.extend(ctrl.state, obj);
     };
+
+    function setZoomLevel(zoomLevel) {
+      ctrl.map.setZoom(parseInt(zoomLevel));
+    }
+
+    function setCenter(centerObject) {
+      ctrl.map.setCenter(centerObject);
+    }
 
     function convertLatLng(lat, lng) {
       return new google.maps.LatLng(parseFloat(lat), parseFloat(lng));
